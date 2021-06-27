@@ -6,13 +6,13 @@ export function Menu() {
   return (
     <nav className="menu">
       <div>
-        <Link href="/">
+        <Link to="/">
           <img src={LogoImg} alt="Logo" />
           Well Played
         </Link>
       </div>
 
-      <Link href="/cart">
+      <Link to="/cart">
         <img src={CartImg} alt="Logo" />
         <div className="cart-items">
           <span>0</span>

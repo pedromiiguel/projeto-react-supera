@@ -1,0 +1,54 @@
+.card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  
+  display: flex;
+
+  padding: 16px;
+
+  border-radius: 8px;
+
+  .card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+
+    button {
+      border: 0;
+
+      background: #fff;
+
+      cursor: pointer;
+
+      width: 50px;
+      height: 50px;
+
+      transition: filter 0.2ms;
+
+      &:hover {
+        border-radius: 50%;
+
+        filter: brightness(0.9);
+      }
+      .cart-icon {
+        height: 25px;
+        width: 25px;
+
+        transition: filter 0.2ms;
+
+        &:hover {
+          filter: brightness(0.9);
+        }
+      }
+    }
+  }
+
+  h4 {
+    font: 500 20px 'Roboto', sans-serif;
+    color: #66666e;
+  }
+
+  p {
+    color: #66666e;
+  }
+}
