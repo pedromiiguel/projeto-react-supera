@@ -1,14 +1,20 @@
-import './styles.scss';
-import { Link } from 'react-router-dom';
-import { Menu } from '../../components/Menu';
-
-import DeleteIcon from '@material-ui/icons/Delete';
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 
+import { Link } from 'react-router-dom';
+import { Menu } from '../../components/Menu';
+import { CartItem } from '../../components/CartItem'
+
+import { convertCurrency } from '../../utils/convertCurrency';
+
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
+import './styles.scss';
+
+
 export function Cart() {
-  const { cart, handleRemoveProductToCart, amount, freight } = useContext(CartContext);
-  console.log(amount)
+  const { cart, amount, freight } = useContext(CartContext);
+  
   return (
     <div id="page-cart">
       <header>
@@ -24,46 +30,15 @@ export function Cart() {
             <p>Remover</p>
           </div>
           {cart.map((product, index) => (
-            <div className="cart-item" key={product.id}>
-              <div className=" cart-item-header">
-                <img src={product.image} alt="" />
-                <p>{product.name}</p>
-              </div>
-
-              <p>1</p>
-              <p>
-                {product.price.toLocaleString('pt-br', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })}
-              </p>
-              <button
-                className="delete-button"
-                title="Remover produto"
-                onClick={() => {
-                  handleRemoveProductToCart(product, index);
-                }}
-              >
-                <DeleteIcon className="delete-icon" />
-              </button>
-            </div>
+            <CartItem product={product} index={index} key={product.id}/>
           ))}
 
           <div className="checkout-container">
-            <Link to="/">Continuar comprando</Link>
+            <Link to="/"> <span><ArrowBackIcon/></span> Continuar comprando</Link>
             <div className="checkout">
-              <p>Frete: {freight.toLocaleString('pt-br', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })}</p>
-              <p>Subtotal: {amount.toLocaleString('pt-br', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })}</p>
-              <p>Total: {(freight + amount).toLocaleString('pt-br', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })}</p>
+              <p>Frete: {convertCurrency(freight)}</p>
+              <p>Subtotal: {convertCurrency(amount)}</p>
+              <p>Total: {convertCurrency(freight + amount)}</p>
               <button>Finalizar compra</button>
             </div>
           </div>

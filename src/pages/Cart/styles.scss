@@ -10,7 +10,9 @@
     .cart-items {
       max-width: 1100px;
       margin: 0 auto;
+      overflow-x: auto;
 
+      
       .cart-title {
         display: flex;
         justify-content: space-around;
@@ -73,14 +75,17 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         a {
+          font-size: 16px;
+          color: #616161;
           text-decoration: none;
-
+          display: flex;
+          align-items: center;
+          gap: 8px;
           &:hover {
-            text-decoration: underline;
+            border-radius: 50%;
+            filter: brightness(0.9);
           }
-          
         }
 
         .checkout {
@@ -104,8 +109,10 @@
             width: 200px;
             padding: 16px;
             border-radius: 8px;
-
+            background: #43a047;
             transition: filter 0.2ms;
+            color: #fff;
+
             &:hover {
               filter: brightness(0.9);
             }
