@@ -2,7 +2,10 @@ import './styles.scss';
 import LogoImg from '../../assets/controle-de-video-game.png';
 import CartImg from '../../assets/cart-icon.svg';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 export function Menu() {
+  const { cart } = useContext(CartContext);
   return (
     <nav className="menu">
       <div>
@@ -15,7 +18,7 @@ export function Menu() {
       <Link to="/cart">
         <img src={CartImg} alt="Logo" />
         <div className="cart-items">
-          <span>0</span>
+          <span>{cart.length}</span>
         </div>
       </Link>
     </nav>

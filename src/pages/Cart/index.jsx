@@ -7,15 +7,8 @@ import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 
 export function Cart() {
-  const { cart, handleRemoveProductToCart } = useContext(CartContext);
-
-  const teste = {
-    id: 312,
-    name: 'Super Mario Odyssey',
-    price: 197.88,
-    score: 100,
-    image: 'https://i.ibb.co/d42RgZ6/horizon-zero-dawn.png',
-  };
+  const { cart, handleRemoveProductToCart, amount, freight } = useContext(CartContext);
+  console.log(amount)
   return (
     <div id="page-cart">
       <header>
@@ -48,7 +41,7 @@ export function Cart() {
                 className="delete-button"
                 title="Remover produto"
                 onClick={() => {
-                  handleRemoveProductToCart(index);
+                  handleRemoveProductToCart(product, index);
                 }}
               >
                 <DeleteIcon className="delete-icon" />
@@ -59,9 +52,18 @@ export function Cart() {
           <div className="checkout-container">
             <Link to="/">Continuar comprando</Link>
             <div className="checkout">
-              <p>Frete: R$ 40,00</p>
-              <p>Subtotal: R$ 200,00</p>
-              <p>Total: R$ 240,00</p>
+              <p>Frete: {freight.toLocaleString('pt-br', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}</p>
+              <p>Subtotal: {amount.toLocaleString('pt-br', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}</p>
+              <p>Total: {(freight + amount).toLocaleString('pt-br', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}</p>
               <button>Finalizar compra</button>
             </div>
           </div>
