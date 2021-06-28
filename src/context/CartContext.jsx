@@ -1,9 +1,27 @@
+import { useState } from 'react';
 import { createContext } from 'react';
 
 export const CartContext = createContext({});
 
 export const CartProvider = ({ children }) => {
-  const hello = "hello world";
+  const [cart, setCart] = useState([]);
 
-  return <CartContext.Provider value={{hello}}>{children}</CartContext.Provider>;
+  function handleAddProductToCart(product) {
+    setCart([...cart, product]);
+    console.log(cart);
+  }
+
+  function handleRemoveProductToCart(productIndex) {
+    const newCart = cart.filter((cartItem, cartIndex) => {
+      return cartIndex !== productIndex;
+    });
+
+    setCart(newCart)
+  }
+
+  return (
+    <CartContext.Provider value={{ cart, handleAddProductToCart,handleRemoveProductToCart }}>
+      {children}
+    </CartContext.Provider>
+  );
 };

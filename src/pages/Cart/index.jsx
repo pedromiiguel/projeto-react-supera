@@ -1,5 +1,5 @@
 import './styles.scss';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { Menu } from '../../components/Menu';
 
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -7,9 +7,8 @@ import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 
 export function Cart() {
+  const { cart, handleRemoveProductToCart } = useContext(CartContext);
 
-  const {hello} = useContext(CartContext)
-  console.log(hello)
   const teste = {
     id: 312,
     name: 'Super Mario Odyssey',
@@ -31,25 +30,34 @@ export function Cart() {
             <p>Preço</p>
             <p>Remover</p>
           </div>
-          <div className="cart-item">
-            <div className=" cart-item-header">
-              <img src={teste.image} alt="" />
-              <p>{teste.name}</p>
-            </div>
+          {cart.map((product, index) => (
+            <div className="cart-item" key={product.id}>
+              <div className=" cart-item-header">
+                <img src={product.image} alt="" />
+                <p>{product.name}</p>
+              </div>
 
-            <p>1</p>
-            <p>
-              {teste.price.toLocaleString('pt-br', {
-                style: 'currency',
-                currency: 'BRL',
-              })}
-            </p>
-            <button className="delete-button" title="Remover produto">
-              <DeleteIcon className="delete-icon" />
-            </button>
-          </div>
+              <p>1</p>
+              <p>
+                {product.price.toLocaleString('pt-br', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}
+              </p>
+              <button
+                className="delete-button"
+                title="Remover produto"
+                onClick={() => {
+                  handleRemoveProductToCart(index);
+                }}
+              >
+                <DeleteIcon className="delete-icon" />
+              </button>
+            </div>
+          ))}
+
           <div className="checkout-container">
-            <Link to="/">Continuar comprando</Link >
+            <Link to="/">Continuar comprando</Link>
             <div className="checkout">
               <p>Frete: R$ 40,00</p>
               <p>Subtotal: R$ 200,00</p>

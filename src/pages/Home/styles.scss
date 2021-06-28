@@ -2,8 +2,26 @@
   width: 100vw;
 
   main {
-    margin: 100px 0;
+    text-align: center;
 
+    .products-header {
+      max-width: 1100px;
+      margin: 40px auto;
+      display: flex;
+      justify-content: space-between;
+
+      select {
+        width: 100%;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        padding: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        color: #000;
+      }
+    }
+
+    height: 1px;
     .products {
       margin: 0 auto;
       max-width: 1100px;
@@ -12,7 +30,6 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      
     }
   }
 }
