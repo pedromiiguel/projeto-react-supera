@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom'
 import { Menu } from '../../components/Menu';
 
 import DeleteIcon from '@material-ui/icons/Delete';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 export function Cart() {
+
+  const {hello} = useContext(CartContext)
+  console.log(hello)
   const teste = {
     id: 312,
     name: 'Super Mario Odyssey',
