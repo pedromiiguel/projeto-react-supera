@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
-import './styles.scss';
-
-import IconButton from '@material-ui/core/IconButton';
-
-
+import React from 'react';
 import Rating from '@material-ui/lab/Rating';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+
+import './styles.scss';
+
+
 export function CardItem({ product }) {
-  const [value, setValue] = useState(3);
-  const [hover, setHover] = useState(-1);
   return (
     <div className="card" key={product.id}>
       <img src={product.image} alt={product.name} />

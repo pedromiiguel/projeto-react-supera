@@ -1,0 +1,115 @@
+#page-cart {
+  width: 100vw;
+
+  main {
+    h1 {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .cart-items {
+      max-width: 1100px;
+      margin: 0 auto;
+
+      .cart-title {
+        display: flex;
+        justify-content: space-around;
+        padding: 16px;
+        border-top: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
+
+        p {
+          color: #616161;
+        }
+      }
+
+      .cart-item {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        border-bottom: 1px solid #e0e0e0;
+        padding: 16px;
+
+        p {
+          color: #616161;
+        }
+
+        .cart-item-header {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 16px;
+          margin-left: -60px;
+
+          img {
+            height: 80px;
+            width: 80px;
+          }
+        }
+
+        .delete-button {
+          border: 0;
+          background: #fff;
+          cursor: pointer;
+          height: 50px;
+          width: 50px;
+          &:hover {
+            border-radius: 50%;
+            filter: brightness(0.9);
+          }
+
+          .delete-icon {
+            height: 25px;
+            width: 25px;
+            color: #616161;
+          }
+        }
+      }
+
+      .checkout-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+          
+        }
+
+        .checkout {
+          margin-top: 16px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: flex-end;
+          gap: 8px;
+
+          p {
+            color: #616161;
+          }
+
+          button {
+            margin-top: 8px;
+            border: 0;
+            cursor: pointer;
+            height: 50px;
+            width: 200px;
+            padding: 16px;
+            border-radius: 8px;
+
+            transition: filter 0.2ms;
+            &:hover {
+              filter: brightness(0.9);
+            }
+          }
+        }
+      }
+    }
+  }
+}

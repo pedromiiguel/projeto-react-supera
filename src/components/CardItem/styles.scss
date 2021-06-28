@@ -1,11 +1,17 @@
 .card {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  
+
   display: flex;
 
   padding: 16px;
 
   border-radius: 8px;
+
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 3px 8px;
+  }
 
   .card-info {
     display: flex;
@@ -27,13 +33,12 @@
 
       &:hover {
         border-radius: 50%;
-
         filter: brightness(0.9);
       }
       .cart-icon {
         height: 25px;
         width: 25px;
-
+        color: #9e9e9e;
         transition: filter 0.2ms;
 
         &:hover {

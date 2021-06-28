@@ -23,7 +23,7 @@ export function Home() {
       <main>
         <div className="products">
           {products.map((product) => (
-            <CardItem product={product}/>
+            <CardItem key={product.id} product={product}/>
           ))}
             
         </div>
