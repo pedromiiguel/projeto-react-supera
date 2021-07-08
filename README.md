@@ -36,7 +36,7 @@
 
 ## 🔖 Sobre
 
-O Well Played é um e-commerce de jogos para video games, desenvolvido durante um desafio técnico para uma vaga na empresa Supera Tecnolgia. 
+O Well Played é um e-commerce de jogos para video games, desenvolvido durante um desafio técnico para uma vaga na empresa Supera Tecnologia. 
 
 ## 🚀 Tecnologias
 
