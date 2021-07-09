@@ -1,12 +1,12 @@
-import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
-
-import { convertCurrency } from '../../utils/convertCurrency';
-
+import React, { useContext } from 'react';
+import P from 'prop-types';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { CartContext } from '../../context/CartContext';
+import convertCurrency from '../../utils/convertCurrency';
 
 import './styles.scss';
-export function CartItem({ product, index }) {
+
+export default function CartItem({ product = [], index }) {
   const { handleRemoveProductToCart } = useContext(CartContext);
 
   return (
@@ -19,6 +19,7 @@ export function CartItem({ product, index }) {
       <th>{convertCurrency(product.price)}</th>
       <th>
         <button
+          type="button"
           className="delete-button"
           title="Remover produto"
           onClick={() => {
@@ -31,3 +32,18 @@ export function CartItem({ product, index }) {
     </tr>
   );
 }
+
+CartItem.defaultProps = {
+  product: [],
+};
+
+CartItem.propTypes = {
+  product: P.arrayOf(
+    P.shape({
+      name: P.string.isRequired,
+      image: P.string.isRequired,
+      price: P.number.isRequired,
+    }),
+  ),
+  index: P.string.isRequired,
+};

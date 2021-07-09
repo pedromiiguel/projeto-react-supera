@@ -1,17 +1,15 @@
-import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
-
+/* eslint-disable react/jsx-one-expression-per-line */
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu } from '../../components/Menu';
-import { CartItem } from '../../components/CartItem';
-
-import { convertCurrency } from '../../utils/convertCurrency';
-
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { CartContext } from '../../context/CartContext';
+import Menu from '../../components/Menu';
+import CartItem from '../../components/CartItem';
+import convertCurrency from '../../utils/convertCurrency';
 
 import './styles.scss';
 
-export function Cart() {
+export default function Cart() {
   const { cart, amount, freight } = useContext(CartContext);
 
   return (
@@ -48,7 +46,7 @@ export function Cart() {
             <p>Frete: {convertCurrency(freight)}</p>
             <p>Subtotal: {convertCurrency(amount)}</p>
             <p>Total: {convertCurrency(freight + amount)}</p>
-            <button>Finalizar compra</button>
+            <button type="button">Finalizar compra</button>
           </div>
         </div>
       </main>

@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
-import { createContext } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
+import P from 'prop-types';
 
 export const CartContext = createContext({});
 
+// eslint-disable-next-line react/prop-types
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [freight, setFreight] = useState(0);
@@ -12,6 +13,7 @@ export const CartProvider = ({ children }) => {
     const valueFrete = cart.length * 10;
     setFreight(valueFrete);
 
+    // eslint-disable-next-line no-unused-expressions
     amount > 250 && setFreight(0);
   }, [amount, cart]);
 
@@ -23,9 +25,7 @@ export const CartProvider = ({ children }) => {
   function handleRemoveProductToCart(product, productIndex) {
     setAmount(Math.round(amount - product.price));
 
-    const newCart = cart.filter((cartItem, cartIndex) => {
-      return cartIndex !== productIndex;
-    });
+    const newCart = cart.filter((cartItem, cartIndex) => cartIndex !== productIndex);
 
     setCart(newCart);
   }
@@ -43,4 +43,8 @@ export const CartProvider = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
+};
+
+CartProvider.propTypes = {
+  children: P.node.isRequired,
 };

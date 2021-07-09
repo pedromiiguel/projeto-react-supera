@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { Menu } from '../../components/Menu';
-import { CardItem } from '../../components/CardItem';
+import React, { useEffect, useState } from 'react';
+import Menu from '../../components/Menu';
+import CardItem from '../../components/CardItem';
 
 import { api } from '../../services/api';
 
 import './styles.scss';
 
-export function Home() {
+export default function Home() {
   const [products, setProducts] = useState([]);
   const [order, setOrder] = useState('name');
   const [orderedProducts, setOrderedProducts] = useState([]);
@@ -17,29 +17,21 @@ export function Home() {
 
   useEffect(() => {
     if (order === 'name') {
-      const filteredProductsForname = products.sort((a, b) => {
-        return a.name < b.name ? -1 : 1;
-      });
+      const filteredProductsForname = products.sort((a, b) => (a.name < b.name ? -1 : 1));
 
       setOrderedProducts([...filteredProductsForname]);
     }
     if (order === 'price') {
-      const filteredProductsForPrice = products.sort((a, b) => {
-        return a.price < b.price ? -1 : 1;
-      });
-    
+      const filteredProductsForPrice = products.sort((a, b) => (a.price < b.price ? -1 : 1));
+
       setOrderedProducts([...filteredProductsForPrice]);
     }
     if (order === 'score') {
-      const filteredProductsForScore = products.sort((a, b) => {
-        return a.score < b.score ? -1 : 1;
-      });
-    
+      const filteredProductsForScore = products.sort((a, b) => (a.score < b.score ? -1 : 1));
+
       setOrderedProducts([...filteredProductsForScore]);
     }
-  
-
-  },[products,order]);
+  }, [products, order]);
 
   function handleOrder(event) {
     setOrder(event.target.value);

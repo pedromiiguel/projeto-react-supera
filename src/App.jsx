@@ -1,6 +1,7 @@
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Home } from './pages/Home';
-import { Cart } from './pages/Cart';
+import Home from './pages/Home';
+import Cart from './pages/Cart';
 import { CartProvider } from './context/CartContext';
 
 import './styles/global.scss';

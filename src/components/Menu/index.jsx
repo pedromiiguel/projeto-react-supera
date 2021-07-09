@@ -1,10 +1,12 @@
-import './styles.scss';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import LogoImg from '../../assets/controle-de-video-game.png';
 import CartImg from '../../assets/cart-icon.svg';
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
-export function Menu() {
+
+import './styles.scss';
+
+export default function Menu() {
   const { cart } = useContext(CartContext);
   return (
     <nav className="menu">

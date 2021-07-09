@@ -1,4 +1,4 @@
-export function convertCurrency(value) {
+export default function convertCurrency(value) {
   return value.toLocaleString('pt-br', {
     style: 'currency',
     currency: 'BRL',
