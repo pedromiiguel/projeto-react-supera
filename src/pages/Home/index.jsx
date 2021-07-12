@@ -17,17 +17,17 @@ export default function Home() {
 
   useEffect(() => {
     if (order === 'name') {
-      const filteredProductsForname = products.sort((a, b) => (a.name < b.name ? -1 : 1));
+      const filteredProductsForname = products.sort((a, b) => a.name.localeCompare(b.name));
 
       setOrderedProducts([...filteredProductsForname]);
     }
     if (order === 'price') {
-      const filteredProductsForPrice = products.sort((a, b) => (a.price < b.price ? -1 : 1));
+      const filteredProductsForPrice = products.sort((a, b) => (a.price - b.price));
 
       setOrderedProducts([...filteredProductsForPrice]);
     }
     if (order === 'score') {
-      const filteredProductsForScore = products.sort((a, b) => (a.score < b.score ? -1 : 1));
+      const filteredProductsForScore = products.sort((a, b) => (a.score - b.score));
 
       setOrderedProducts([...filteredProductsForScore]);
     }
