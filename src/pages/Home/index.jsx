@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Menu from '../../components/Menu';
 import CardItem from '../../components/CardItem';
-
+import ORDER_BY from '../../constants/orderBy';
 import { api } from '../../services/api';
 
 import './styles.scss';
@@ -16,17 +16,17 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (order === 'name') {
+    if (order === ORDER_BY.NAME) {
       const filteredProductsForname = products.sort((a, b) => a.name.localeCompare(b.name));
 
       setOrderedProducts([...filteredProductsForname]);
     }
-    if (order === 'price') {
+    if (order === ORDER_BY.PRICE) {
       const filteredProductsForPrice = products.sort((a, b) => (a.price - b.price));
 
       setOrderedProducts([...filteredProductsForPrice]);
     }
-    if (order === 'score') {
+    if (order === ORDER_BY.SCORE) {
       const filteredProductsForScore = products.sort((a, b) => (a.score - b.score));
 
       setOrderedProducts([...filteredProductsForScore]);
