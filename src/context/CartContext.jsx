@@ -8,13 +8,14 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [freight, setFreight] = useState(0);
   const [amount, setAmount] = useState(0);
+  const freeFreight = 250;
+  const valueFreight = 10;
 
   useEffect(() => {
-    const valueFrete = cart.length * 10;
+    const valueFrete = cart.length * valueFreight;
     setFreight(valueFrete);
 
-    // eslint-disable-next-line no-unused-expressions
-    amount > 250 && setFreight(0);
+    return amount > freeFreight && setFreight(0);
   }, [amount, cart]);
 
   function handleAddProductToCart(product) {
@@ -25,7 +26,9 @@ export const CartProvider = ({ children }) => {
   function handleRemoveProductToCart(product, productIndex) {
     setAmount(Math.round(amount - product.price));
 
-    const newCart = cart.filter((cartItem, cartIndex) => cartIndex !== productIndex);
+    const newCart = cart.filter(
+      (_cartItem, cartIndex) => cartIndex !== productIndex,
+    );
 
     setCart(newCart);
   }
